@@ -59,3 +59,15 @@ export type TTab = {
   label: string;
   content: JSX.Element;
 };
+
+export interface LLineChartdata{
+  date: string;
+  current_year_value: number;
+  previous_year_value: number;
+}
+
+export type AAccordion = {
+  id: number;
+  content: JSX.Element;
+  isOpen: boolean;
+}

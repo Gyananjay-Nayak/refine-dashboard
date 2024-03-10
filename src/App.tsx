@@ -14,6 +14,7 @@ import {
   Routes,
 } from "react-router-dom";
 import "./App.css";
+import '@fortawesome/fontawesome-free/css/all.css';
 import { Layout } from "./components/layout";
 import {
   ProductCreate,

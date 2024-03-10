@@ -1,14 +1,18 @@
 import React from "react";
+import { formatMonthYear } from "../../utills/helpers";
 export const ChartTooltip = ({
   active,
   payload,
   label,
   coordinate,
   colors,
-  kpi,
-}: any) => {
+}: // kpi,
+any) => {
   if (active && payload && payload.length) {
-    const dataPoint = payload[0].payload;
+    const dataPoint1 = payload[0].payload;
+    const dataPoint2 = payload[1].payload;
+    const date1 = formatMonthYear(new Date(dataPoint1.date));
+    const date2 = formatMonthYear(new Date(dataPoint2.date));
 
     const tooltipStyle = {
       left: coordinate.x, // Adjust positioning
@@ -17,7 +21,7 @@ export const ChartTooltip = ({
 
     return (
       <div
-        className="p-1 flex flex-col justify-center items-start border border-black rounded-lg text-zinc-50"
+        className="p-2 flex flex-col justify-center items-start border shadow-md border-white rounded-lg"
         style={tooltipStyle}
       >
         <div
@@ -31,9 +35,8 @@ export const ChartTooltip = ({
             left: "-10px",
           }}
         />
-        <p className="flex text-xs font-semibold">{label}</p>
-        <p className="text-xs">
-          <span
+        <p className="text-xs py-2 px-3">
+          {/* <span
             className="mr-1"
             style={{
               width: "0.5px",
@@ -43,9 +46,10 @@ export const ChartTooltip = ({
             }}
           >
             &nbsp;&nbsp;&nbsp;&nbsp;
-          </span>
-          {`${kpi}: ${dataPoint.value}`}
+          </span> */}
+          {`${date1} : ${dataPoint1.value}`}
         </p>
+        <p className="text-xs py-2 px-3">{`${date2} : ${dataPoint2.value}`}</p>
       </div>
     );
   }
