@@ -38,10 +38,10 @@ export const AccordionStats = ({
   percent,
 }: AccordionStatsProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const newRef = useRef(null);
+  const newRef = useRef<HTMLDivElement>(null);
 
   const handleOutsideClick = (e: Event) => {
-    if (newRef.current && !newRef.current.contains(e.target)) {
+    if (newRef.current && !newRef.current.contains(e.target as Node)) {
       closeModal();
     }
   };
